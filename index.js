@@ -16,9 +16,12 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(path) {
+  let ayrilmisPath = path.split("/");
+  let sonKisim = ayrilmisPath[ayrilmisPath.length - 1];
+  return sonKisim;
 }
+console.log(dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3"));
 
 /*
   GÖREV 2
@@ -38,9 +41,18 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(numberArray) {
+  if (numberArray.length === 0) {
+    return null;
+  } else {
+    let totalNumber = numberArray.reduce((item, a) => item + a, 0);
+    let average = totalNumber / numberArray.length;
+    return average;
+  }
 }
+
+const numbers = [109, 216, 288, 143, 71, 185, -278, 194, 5];
+console.log(ortalamaBul(numbers));
 
 /*
   GÖREV 3
@@ -62,9 +74,31 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamadanBuyukleriBul(arr, averageCB) {
+  let average = averageCB(arr);
+  if (arr.length === 0) {
+    return null;
+  } else {
+    return arr.filter((num) => num >= average);
+  }
+
+  //! 2. method uzun yol
+  /* let average = averageCB(arr);
+  let nullArray = [];
+  if (arr.length === 0) {
+    return null;
+  } else {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] >= average) {
+        nullArray.push(arr[i]);
+      } else {
+        continue;
+      }
+    }
+  }
+  return nullArray; */
 }
+console.log(ortalamadanBuyukleriBul(numbers, ortalamaBul));
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
